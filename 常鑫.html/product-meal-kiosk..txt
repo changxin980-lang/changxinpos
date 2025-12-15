@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>產品頁面 - 常鑫科技</title>
+<style>
+body { font-family: "標楷體", PMingLiU, serif; margin:0; background:#fff; line-height:1.6; }
+header { background:#1a1a1a; color:#fff; padding:40px 20px; text-align:center; }
+h1,h2,h3 { font-family:"標楷體", PMingLiU, serif; }
+section { padding:50px 20px; max-width:800px; margin:auto; }
+.carousel { position:relative; width:100%; overflow:hidden; margin-top:10px; }
+.carousel-track { display:flex; transition:transform 0.4s ease; }
+.carousel-track img { flex:0 0 100%; max-width:100%; border-radius:10px; cursor:pointer; }
+.carousel-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.4); color:#fff; border:none; padding:10px 15px; cursor:pointer; border-radius:6px; font-size:18px; }
+.carousel-btn.left { left:10px; }
+.carousel-btn.right { right:10px; }
+.btn-group { text-align:center; margin-top:20px; }
+a.action-btn { display:inline-block; margin:0 8px; padding:8px 12px; background:#1a1a1a; color:#fff; text-decoration:none; border-radius:5px; }
+footer { background:#1a1a1a; color:white; text-align:center; padding:30px 20px; margin-top:40px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>自助機 </h1>
+  <h3>常鑫科技 Changxin Innovations Technology Co., Ltd.</h3>
+</header>
+
+<section>
+  <div class="carousel" id="carousel1" data-index="0">
+    <div class="carousel-track">
+      <img src="images/product_meal_kiosk_1.jpg" >
+      <img src="images/product_meal_kiosk_2.jpg" >
+ <img src="images/product_meal_kiosk_3.jpg" >
+
+          </div>
+    <button class="carousel-btn left" onclick="moveSlide('carousel1', -1)">&#10094;</button>
+    <button class="carousel-btn right" onclick="moveSlide('carousel1', 1)">&#10095;</button>
+  </div>
+
+  <div class="btn-group">
+    <a class="action-btn" href="javascript:history.back()">🔙 回上一頁</a>
+  </div>
+</section>
+
+<script>
+// 每張圖片對應的 PDF 路徑
+
+
+function moveSlide(id, direction){
+  const carousel = document.getElementById(id);
+  const track = carousel.querySelector('.carousel-track');
+  const items = track.children.length;
+  let index = Number(carousel.getAttribute('data-index')) || 0;
+
+  index += direction;
+  if(index < 0) index = items - 1;
+  if(index >= items) index = 0;
+
+  carousel.setAttribute('data-index', index);
+  track.style.transform = `translateX(-${index * 100}%)`;
+
+  
+}
+
+</script>
+
+<footer>
+  <h2>聯絡我們</h2>
+  <p>Email：changxin980@hotmail.com</p>
+  <p>Phone：02-27202188</p>
+  <p>LINE：changxin980</p>
+</footer>
+
+</body>
+</html>
